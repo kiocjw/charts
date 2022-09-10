@@ -29,6 +29,7 @@ class BarLabelDecorator<D> extends BarRendererDecorator<D> {
   // Default configuration
   static const _defaultLabelPosition = BarLabelPosition.auto;
   static const _defaultLabelPadding = 5;
+  static const _defaultLabelMaxWidth = 0;
   static const _defaultLabelPlacement = BarLabelPlacement.followMeasureAxis;
   static const _defaultHorizontalLabelAnchor = BarLabelAnchor.start;
   static const _defaultVerticalLabelAnchor = BarLabelAnchor.end;
@@ -39,7 +40,6 @@ class BarLabelDecorator<D> extends BarRendererDecorator<D> {
       TextStyleSpec(fontSize: 12, color: Color.black);
   static final _labelSplitPattern = '\n';
   static final _defaultMultiLineLabelPadding = 2;
-  static final _defaultLabelMaxWidth = 0;
 
   /// Configures [TextStyleSpec] for labels placed inside the bars.
   final TextStyleSpec insideLabelStyleSpec;
