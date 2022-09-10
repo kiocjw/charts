@@ -39,6 +39,7 @@ class BarLabelDecorator<D> extends BarRendererDecorator<D> {
       TextStyleSpec(fontSize: 12, color: Color.black);
   static final _labelSplitPattern = '\n';
   static final _defaultMultiLineLabelPadding = 2;
+  static final _defaultLabelMaxWidth = 0;
 
   /// Configures [TextStyleSpec] for labels placed inside the bars.
   final TextStyleSpec insideLabelStyleSpec;
@@ -60,6 +61,9 @@ class BarLabelDecorator<D> extends BarRendererDecorator<D> {
 
   /// Space before and after the label text.
   final int labelPadding;
+  
+  /// Max Width of Label
+  final int labelMaxWidth;
 
   BarLabelDecorator({
     TextStyleSpec? insideLabelStyleSpec,
@@ -68,6 +72,7 @@ class BarLabelDecorator<D> extends BarRendererDecorator<D> {
     this.labelPosition = _defaultLabelPosition,
     this.labelPlacement = _defaultLabelPlacement,
     this.labelPadding = _defaultLabelPadding,
+    this.labelMaxWidth = _defaultLabelMaxWidth,
     this.labelVerticalPosition = _defaultlabelVerticalPosition,
   })  : insideLabelStyleSpec = insideLabelStyleSpec ?? _defaultInsideLabelStyle,
         outsideLabelStyleSpec =
@@ -168,7 +173,9 @@ class BarLabelDecorator<D> extends BarRendererDecorator<D> {
         ..textStyle = calculatedLabelPosition == BarLabelPosition.inside
             ? datumInsideLabelStyle
             : datumOutsideLabelStyle
-        ..maxWidth = bounds.width
+        ..maxWidth = labelMaxWidth == 0
+            ? bounds.width
+            : labelMaxWidth
         ..textDirection = rtl ? TextDirection.rtl : TextDirection.ltr);
 
       // Total label height depends on the label element's text style.
