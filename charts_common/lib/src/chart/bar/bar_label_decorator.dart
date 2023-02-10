@@ -39,7 +39,7 @@ class BarLabelDecorator<D> extends BarRendererDecorator<D> {
   static final _defaultOutsideLabelStyle =
       TextStyleSpec(fontSize: 12, color: Color.black);
   static final _labelSplitPattern = '\n';
-  static final _defaultMultiLineLabelPadding = 2;
+  static const _defaultMultiLineLabelPadding = 2;
 
   /// Configures [TextStyleSpec] for labels placed inside the bars.
   final TextStyleSpec insideLabelStyleSpec;
